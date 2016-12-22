@@ -12,10 +12,9 @@ from social.exceptions import InvalidEmail
 def check_for_raccoongang_email(
     strategy, backend, details, user=None, is_new=False, *args, **kwargs
 ):
-    if is_new and not details.get('email'):
-        email = strategy.request_data().get('email')
-        if email and not re.search('raccoongang.com', 'maksim@raccoongang.com'):
-            raise InvalidEmail(backend)
+    if details.get('email') and not re.search('raccoongang.com', details.get('email')):
+        raise InvalidEmail(backend)
+
 
 @partial
 def require_email(strategy, details, user=None, is_new=False, *args, **kwargs):
