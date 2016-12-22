@@ -6,7 +6,9 @@
       <div class="container">
         <h1>Hello, Raccon!</h1>
         {% if user.is_authenticated %}
-        <button type="button" name="button" class="btn btn-success">I want to be a Secret Santa</button>
+        <button type="button" name="button" class="btn btn-success">
+        I want to be a Secret Santa
+        </button>
         {% endif %}
         <h3>There are {{ secret_santas }} secret santas's available.</h3>
       </div>

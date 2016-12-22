@@ -176,7 +176,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     'account.pipeline.require_email',
-    'account.pipeline.mail_validation',
+    'check_for_raccoongang_email',
     'social.pipeline.social_auth.associate_by_email',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',

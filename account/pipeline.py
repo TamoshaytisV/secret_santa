@@ -1,3 +1,5 @@
+import re
+
 from urllib import urlopen
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -6,6 +8,14 @@ from django.shortcuts import redirect
 from social.pipeline.partial import partial
 from social.exceptions import InvalidEmail
 
+
+def check_for_raccoongang_email(
+    strategy, backend, details, user=None, is_new=False, *args, **kwargs
+):
+    if is_new and not details.get('email'):
+        email = strategy.request_data().get('email')
+        if email and not re.search('raccoongang.com', 'maksim@raccoongang.com'):
+            raise InvalidEmail(backend)
 
 @partial
 def require_email(strategy, details, user=None, is_new=False, *args, **kwargs):
