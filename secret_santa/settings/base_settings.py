@@ -43,11 +43,13 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'debug_toolbar',
+    'rest_framework',
 
     'account',
     'social.apps.django_app.default',
     'djangobower',
     'core',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -218,6 +220,14 @@ NOSE_ARGS = [
     '--cover-package=secret_santa',
     '--with-coverage',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 try:
     from settings_local import *
