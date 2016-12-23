@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError, transaction
-from django.db.models import Q
 from django.conf import settings
 from rest_framework import viewsets, generics
 from rest_framework.views import APIView
@@ -9,6 +8,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 
 from ..serializers import GiftSerializer
+from ..utils import get_random_presentee
 from core.models import Gift
 
 
@@ -31,16 +31,11 @@ class AssignView(APIView):
         created = False
         while not created:
             try:
-                presentee = user_model.objects.filter(
-                    ~Q(id=request.user.id),
-                    as_presentee__isnull=True
-                ).first()
+                presentee = get_random_presentee(request.user.id)
                 with transaction.atomic():
                     gift = Gift(
                         santa=request.user,
-                        presentee=user_model.objects.filter(
-                            as_presentee__isnull=True
-                        ).first()
+                        presentee=presentee
                     )
                     gift.save()
                 created = True
