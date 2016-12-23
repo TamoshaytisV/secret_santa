@@ -8,7 +8,9 @@
             <h1>Hello, RacconSanta!</h1>
             {% if user.is_authenticated %}
                 {% if presentee %}
-                    <div class="row text-center"><p>You Presentee is {{ presentee }}</p></div>
+                    <div class="row text-center">
+                        <p>You Presentee is <span id="presentee">{{ presentee }}</span></p>
+                    </div>
                 {% else %}
                 <div class="row text-center">
                     <button type="button" name="button" class="btn btn-success"

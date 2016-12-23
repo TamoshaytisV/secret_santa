@@ -41,6 +41,7 @@
                 type: "POST",
                 success: function (data) {
                     RaccoonSanta.presentee_name = data.presentee_name;
+                    $('#presentee').html()
                 }
             });
         },
