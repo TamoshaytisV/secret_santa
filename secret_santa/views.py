@@ -19,7 +19,7 @@ def home(request):
         'index.html',
         {
             'raccoons': get_user_model().objects.filter(as_santa__isnull=True)
-                .exclude(Q(email=request.user.email) | Q(is_staff=True))
+                .exclude(Q(email=request.user.email) | Q(is_staff=True) | Q(as_presentee__isnull=False))
                 .count(),
             'presentee': presentee,
             'available_backends': load_backends(settings.AUTHENTICATION_BACKENDS)
