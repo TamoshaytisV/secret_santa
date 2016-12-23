@@ -21,3 +21,4 @@ python-memcached
 libsass==0.10.0
 paved==0.5.1
 django-debug-toolbar==1.4
+djangorestframework

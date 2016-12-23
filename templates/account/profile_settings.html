@@ -283,42 +283,6 @@
     </form>
   </div>
 
-
-  <div class="col-sm-4 social-buttons">
-    <div class="">
-      <!--"social-login social-login__profile">-->
-      <h4>{% trans "Link Accounts" %}:</h4>
-      {% static "images/button_to_bind/" as img_social %}
-      {% for sublist in available_backends|social_backends %}
-              {% for name, backend in sublist %}
-
-                      {% associated backend %}
-                      {% if association %}
-                        <form method="POST"
-                              action="{% url "social:disconnect_individual" backend=association.provider association_id=association.id %}?next={{ request.path }}">
-                          <a data-disconnect-social-account
-                             class="btn btn-block btn-social btn-sm btn-{{ name|backend_class }} social-login_link__active"
-                             data-provider={{ name }}
-                                     href="#">
-                            Delete {{ backend|backend_name }} association
-                            <span class="fa fa-{{ name|backend_class }}"></span>
-                          </a>
-
-                              {% csrf_token %}
-                        </form>
-
-                      {% else %}
-                          <a class="btn btn-block btn-social btn-sm btn-{{ name|backend_class }}" href="{% url 'social:begin' backend=name %}?next={{ request.path }}">
-                            {% trans "Login with" %} {{ backend|backend_name }}
-                            <span class="fa fa-{{ name|backend_class }}"></span>
-                          </a>
-                      {% endif %}
-
-              {% endfor %}
-      {% endfor %}
-    </div>
-  </div>
-
   <div class="col-sm-2"></div>
 {% endblock %}
 

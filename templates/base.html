@@ -1,6 +1,7 @@
 {% load staticfiles %}
 {% load i18n %}
 {% load bower %}
+{% load backend_utils %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +18,8 @@
 {#    <link href="{% static 'bower_components/select2-4.0.0/dist/css/select2.min.css' %}" rel="stylesheet" />#}
     <link href="{% static 'bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bower_components/bootstrap-social/bootstrap-social.css' %}" rel="stylesheet" >
+    <link href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" >
     {% endblock %}
 
     {% block top_js %}
@@ -70,10 +73,15 @@
             </ul>
 
           {% if not user.is_authenticated %}
-            <a class="btn btn-primary" href="{% url 'registration_register' %}">{% trans "Sign Up" %}</a>
-            <a class="btn btn-success" href="{% url 'account:login' %}?next={{ request.get_full_path }}">
-              {% trans "Sign In" %}
-            </a>
+          <div class="row">
+              <div class="col-sm-9">
+                  {% for backend in backends.backends %}
+                      <a data-social-url class="custom_img-thumbnail_link btn btn-social-icon btn-{{ backend|backend_class }}" href="{% url 'social:begin' backend %}">
+                          <span class="fa fa-{{ backend|backend_class }}"></span>
+                      </a>
+                  {% endfor %}
+              </div>
+          </div>
           {% endif %}
           </div>
         </div>
@@ -92,7 +100,7 @@
 
     <footer class="panel-footer">
       <div class="container">
-        <p>© Company 2015</p>
+        <p>© RaccoonGang 2016</p>
       </div>
     </footer>
     {% block js %}

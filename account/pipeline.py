@@ -1,10 +1,24 @@
+import re
+
 from urllib import urlopen
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.shortcuts import redirect
 
 from social.pipeline.partial import partial
-from social.exceptions import InvalidEmail
+from social.exceptions import AuthException
+
+
+class InvalidRacconEmail(AuthException):
+    def __str__(self):
+        return 'Please use RacconGang corporate account.'
+
+
+def check_for_raccoongang_email(
+    strategy, backend, details, user=None, is_new=False, *args, **kwargs
+):
+    if details.get('email') and not re.search('raccoongang.com', details.get('email')):
+        raise InvalidRacconEmail(backend)
 
 
 @partial
