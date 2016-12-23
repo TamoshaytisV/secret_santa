@@ -1,1 +1,1 @@
-secretsanta: gunicorn {{ project_name }}.wsgi
+web: gunicorn secret_santa.wsgi --log-file -
