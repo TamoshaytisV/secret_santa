@@ -41,6 +41,7 @@
                 type: "POST",
                 success: function (data) {
                     $('#santa_button').remove();
+                    $('#santa_result').html("<p>You Presentee is <span id='presentee'></span></p>");
                     $('#presentee').html(data.presentee_name);
                 }
             });
