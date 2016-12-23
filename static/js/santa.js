@@ -40,12 +40,11 @@
                 url: url,
                 type: "POST",
                 success: function (data) {
-                    RaccoonSanta.presentee_name = data.presentee_name;
-                    $('#presentee').html()
+                    $('#santa_button').remove();
+                    $('#presentee').html(data.presentee_name);
                 }
             });
-        },
-        presentee_name: ''
+        }
     };
 
     window.RaccoonSanta = RaccoonSanta;
