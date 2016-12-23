@@ -43,11 +43,13 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'debug_toolbar',
+    'rest_framework',
 
     'account',
     'social.apps.django_app.default',
     'djangobower',
     'core',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,7 +80,7 @@ DATABASES = {
     }
 }
 
-PROJECT_NAME = "secret_santa"
+PROJECT_NAME = "Raccoon Secret Santa"
 
 TEMPLATES = [
     {
@@ -131,7 +133,7 @@ LOGIN_REDIRECT_URL = '/accounts/'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/accounts/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/accounts/'
 
@@ -176,7 +178,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     'account.pipeline.require_email',
-    'account.pipeline.mail_validation',
+    'account.pipeline.check_for_raccoongang_email',
     'social.pipeline.social_auth.associate_by_email',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
@@ -208,7 +210,14 @@ BOWER_INSTALLED_APPS = (
     # 'bootstrap-theme',
 )
 
-BOWER_COMPONENTS_ROOT = STATICFILES_DIRS[0]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+]
+
+BOWER_COMPONENTS_ROOT = STATICFILES_DIRS[0] + '/bower_components/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
@@ -218,6 +227,14 @@ NOSE_ARGS = [
     '--cover-package=secret_santa',
     '--with-coverage',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 try:
     from settings_local import *

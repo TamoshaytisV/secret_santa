@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
 from django.utils import timezone
 from django.db import models
+from django.conf import settings
 
 
-class SecretSanta(models.Model):
+class SecretSantaEvent(models.Model):
     valid_from = models.DateTimeField(auto_now_add=timezone.now())
     valid_to = models.DateTimeField()
 
@@ -13,9 +14,5 @@ class SecretSanta(models.Model):
 
 
 class Gift(models.Model):
-    santa = models.CharField(max_length=50)
-    presentee = models.ForeignKey('Presentee')
-
-
-class Presentee(models.Model):
-    name = models.CharField(max_length=50)
+    santa = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='as_santa')
+    presentee = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='as_presentee')

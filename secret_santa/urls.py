@@ -12,6 +12,8 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
     url(r'^accounts/', include('account.urls', namespace='account')),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    # API
+    url(r'^api/', include('api.urls', namespace='api')),
 
 ]
 

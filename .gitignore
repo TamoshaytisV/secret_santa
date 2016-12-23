@@ -63,3 +63,4 @@ target/
 staticfiles
 bower*
 select*
+raccoons.json
