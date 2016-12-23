@@ -4,7 +4,7 @@ from django.db import models
 from django.conf import settings
 
 
-class SecretSanta(models.Model):
+class SecretSantaEvent(models.Model):
     valid_from = models.DateTimeField(auto_now_add=timezone.now())
     valid_to = models.DateTimeField()
 

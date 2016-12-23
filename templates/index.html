@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 {% block active_home %}class="active"{% endblock %}
 
+{% block top_js %}
+    <script type="text/javascript" src="{% static 'js/santa.js' %}"></script>
+{% endblock %}
+
 {% block content %}
   <div class="jumbotron">
       <div class="container">
-        <h1>Hello, Raccon!</h1>
+        <h1>Hello, RacconSanta!</h1>
         {% if user.is_authenticated %}
         {% if presentee %}
         <p>You Presentee is {{ presentee }}</p>
         {% else %}
-        <button type="button" name="button" class="btn btn-success">
-        I want to be a Secret Santa
+        <button type="button" name="button" class="btn btn-success" onclick="RaccoonSanta.send_request('/api/v0/assign/')">
+        I want to be a Secret Raccoon Santa
         </button>
         {% endif %}
         {% endif %}
-        <h3>There are {{ secret_santas }} secret santas's available.</h3>
+        <h3>There are {{ raccoons }} raccoons want to get presents.</h3>
       </div>
     </div>
 {% endblock %}

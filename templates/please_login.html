@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block active_home %}class="active"{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+
+            <h2>
+                Welcome dear Raccoon!
+            </h2>
+            {% for backend in backends %}
+                <h3>
+                    Please <a data-social-url href="{% url 'social:begin' backend %}">login</a> with your corporate account!
+                </h3>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
