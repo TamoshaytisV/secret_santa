@@ -11,7 +11,7 @@ from social.exceptions import AuthException
 
 class InvalidRacconEmail(AuthException):
     def __str__(self):
-        return 'Please use RacconGang corporate account.'
+        return 'Please use RaccoonGang corporate account.'
 
 
 def check_for_raccoongang_email(
