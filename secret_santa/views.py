@@ -7,8 +7,14 @@ from core.models import SecretSanta, Gift
 
 
 def home(request):
-    gift = Gift.objects.filter(santa=request.user).first()
-    presentee = (gift.presentee.get_full_name() or gift.presentee.username) if gift else None
+    gift = (
+        Gift.objects.filter(santa=request.user).first()
+        if request.user.is_authenticated() else None
+    )
+    presentee = (
+        (gift.presentee.get_full_name() or gift.presentee.username)
+        if gift else None
+    )
 
     return render(
         request,
