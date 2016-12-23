@@ -212,8 +212,11 @@ BOWER_INSTALLED_APPS = (
 
 
 STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'djangobower.finders.BowerFinder',
 ]
+
 BOWER_COMPONENTS_ROOT = STATICFILES_DIRS[0] + '/bower_components/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
