@@ -11,7 +11,8 @@ def get_random_presentee(user_id):
     user_model = get_user_model()
     qs = user_model.objects.filter(
         ~Q(id=user_id),
-        as_presentee__isnull=True
+        as_presentee__isnull=True,
+        is_staff=False
     )
     count = qs.aggregate(count=Count('id'))['count']
     random_index = randint(0, count - 1)
