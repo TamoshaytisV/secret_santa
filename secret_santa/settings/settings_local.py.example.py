@@ -1,5 +1,7 @@
 SITE_ID = 1
 
+DEBUG = False
+
 # e-mail settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'localhost'
@@ -11,22 +13,14 @@ DEFAULT_FROM_EMAIL = ''
 CONTACT_US_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUPPORT = ''
 
-
-# For Facebook
-SOCIAL_AUTH_FACEBOOK_KEY = ''
-SOCIAL_AUTH_FACEBOOK_SECRET = ''
-
-
-# for linkedin
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = ''
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = ''
-
-# for Google
-SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
-    'https://www.googleapis.com/auth/drive',
-    'https://www.googleapis.com/auth/userinfo.profile'
-]
-
 # For Google+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+DEBUG = False
+SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
+REDIRECT_IS_HTTPS = True
+
