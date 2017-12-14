@@ -5,3 +5,4 @@ WORKDIR /code
 ADD . /code/
 RUN pip install -r requirements.txt
 RUN python2 manage.py migrate
+RUN python2 manage.py bower install
