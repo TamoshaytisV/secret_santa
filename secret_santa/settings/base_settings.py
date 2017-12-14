@@ -204,7 +204,7 @@ BOWER_INSTALLED_APPS = (
     'jquery.validate',
     'jquery#1.11.3',
     'eonasdan-bootstrap-datetimepicker#4.17.42',
-    'moment#2.10.5',
+    'moment#2.19.4',
     'select2#4.0.0',
     'bootstrap-social#5.1.1',
     # 'bootstrap-theme',
