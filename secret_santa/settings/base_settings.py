@@ -148,11 +148,6 @@ SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['last_name', 'first_name']
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'email,last_name,first_name,name,id,link'}
 
-SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'photo_100']
-SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = ['photo_100']
-
-SOCIAL_AUTH_ODNOKLASSNIKI_OAUTH2_SCOPE = ['PHOTO_CONTENT']
-
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'picture-url', 'public-profile-url']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [('id', 'id'),
