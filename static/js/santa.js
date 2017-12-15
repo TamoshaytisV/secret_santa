@@ -42,7 +42,7 @@
                 success: function (data) {
                     $('#santa_button').remove();
                     $('#santa_result').html(
-			"<div><p>You Presentee is <span id='presentee'></span></p></div><div><img src='/static/wohoo.gif' class='img-responsive center-block'/></div>"
+			"<div><p>Your Presentee is <span id='presentee'></span></p></div><div><img src='/static/wohoo.gif' class='img-responsive center-block'/></div>"
 		    );
                     $('#presentee').html(data.presentee_name);
                 }
