@@ -13,7 +13,9 @@ class Command(BaseCommand):
     Command that creates users from json file.
     """
     help = "Create users from json file"
-    args = ("json_path",)
+
+    def add_arguments(self, parser):
+        parser.add_argument('json_path', nargs='+', type=str)
 
     def handle(self, *args, **options):
         """
@@ -31,14 +33,11 @@ class Command(BaseCommand):
               ]
         }
         """
-        if len(args) != 1:
-            raise CommandError("Wrong usage. Please provide path to json file")
-
         try:
-            with open(args[0], 'r') as json_dump:
+            with open(options['json_path'][0], 'r') as json_dump:
                 data = json.load(json_dump)
         except IOError:
-            raise CommandError("Cannot open file `{}`".format(args[0]))
+            raise CommandError("Cannot open file `{}`".format(options['json_path']))
 
         for item in data['raccoons']:
             user, created = Account.objects.get_or_create(email=item['email'])
