@@ -1,4 +1,4 @@
-Django==1.11.6
+Django==1.11.15
 django-bootstrap3==11.0.0
 sqlparse==0.1.19
 django-registration-redux==1.4
@@ -8,7 +8,6 @@ oauthlib==1.0.3
 Pillow==3.3.2
 python-jose==3.0.1
 python-openid==2.2.5
-python-social-auth==0.3.6
 social-auth-app-django
 requests==2.9.1
 requests-oauthlib==0.6.1

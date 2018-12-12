@@ -162,34 +162,34 @@ SOCIAL_AUTH_SLUGIFY_USERNAMES = True
 
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
 
 SOCIAL_AUTH_PIPELINE = (
-    'social.pipeline.social_auth.social_details',
-    'social.pipeline.social_auth.social_uid',
-    'social.pipeline.social_auth.auth_allowed',
-    'social.pipeline.social_auth.social_user',
-    'social.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
     'account.pipeline.require_email',
     'account.pipeline.check_for_raccoongang_email',
-    'social.pipeline.social_auth.associate_by_email',
-    'social.pipeline.user.create_user',
-    'social.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
     # 'social.pipeline.debug.debug',
-    'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
     'account.pipeline.save_profile_picture_and_profile_url',
-    'social.pipeline.debug.debug',
+    'social_core.pipeline.debug.debug',
 )
 
 SOCIAL_AUTH_DISCONNECT_PIPELINE = (
-    'social.pipeline.disconnect.allowed_to_disconnect',
-    'social.pipeline.disconnect.get_entries',
-    'social.pipeline.disconnect.revoke_tokens',
-    'social.pipeline.disconnect.disconnect',
+    'social_core.pipeline.disconnect.allowed_to_disconnect',
+    'social_core.pipeline.disconnect.get_entries',
+    'social_core.pipeline.disconnect.revoke_tokens',
+    'social_core.pipeline.disconnect.disconnect',
     'account.pipeline.disconnect',
 )
 

@@ -5,8 +5,8 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.shortcuts import redirect
 
-from social.pipeline.partial import partial
-from social.exceptions import AuthException
+from social_core.pipeline.partial import partial
+from social_core.exceptions import AuthException
 
 
 class InvalidRacconEmail(AuthException):
