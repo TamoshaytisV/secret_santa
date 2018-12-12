@@ -11,6 +11,10 @@
           <a href="{% url 'account:password-settings' %}">
               {% trans "Password" %}</a>
         </li>
+        <li role="presentation" {% block wishlist_active %}{% endblock %}>
+          <a href="{% url 'account:wishlist' %}">
+              {% trans "Wishlist" %}</a>
+        </li>
       </ul>
     <div class="panel-body" style="padding: 15px 0;">
         {% block settings_content %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import SecretSantaEvent
+from .models import SecretSantaEvent, Gift, WishList
 
 
 class SecretSantaAdmin(admin.ModelAdmin):
@@ -16,4 +16,21 @@ class SecretSantaAdmin(admin.ModelAdmin):
         }),
     ]
 
+
+class GiftAdmin(admin.ModelAdmin):
+    """
+    Admin Class for Gift Model.
+    """
+    list_display = ('santa', 'presentee')
+
+
+class WishListAdmin(admin.ModelAdmin):
+    """
+    Admin Class for WishList Model.
+    """
+    list_display = ('user', 'description')
+
+
+admin.site.register(Gift, GiftAdmin)
+admin.site.register(WishList, WishListAdmin)
 admin.site.register(SecretSantaEvent, SecretSantaAdmin)

@@ -4,6 +4,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.hashers import is_password_usable
 
 from account.models import Account
+from core.models import WishList
 
 
 class ProfileForm(forms.ModelForm):
@@ -59,3 +60,9 @@ class CurrentPasswordChangeForm(PasswordChangeForm):
                 code='password_incorrect',
             )
         return old_password
+
+
+class WishlistForm(forms.ModelForm):
+    class Meta:
+        model = WishList
+        fields = ['description', ]

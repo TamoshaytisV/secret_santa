@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^login/$', views.login, name='login'),
     url(r'^$', views.ProfileSettingsView.as_view(), name='profile-settings'),
+    url(r'^wishlist$', views.WishlistView.as_view(), name='wishlist'),
     url(r'^settings/email/$', views.EmailSettingsView.as_view(), name='email-settings'),
     url(r'^settings/email/verify/(?P<verification_key>\w+)/$', views.EmailVerifyView.as_view(), name='email-verify'),
     url(r'^settings/password/$', views.password_change, name='password-settings'),

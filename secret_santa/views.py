@@ -11,6 +11,9 @@ def home(request):
     if request.user.is_authenticated():
         gift = Gift.objects.filter(santa=request.user).first()
         presentee = (gift.presentee.get_full_name() or gift.presentee.username) if gift else None
+        wishlist = getattr(gift.presentee, 'wishlist')
+        if wishlist:
+            wishlist = wishlist.get().description
     else:
         return render(request, 'please_login.html', {'backends': load_backends(settings.AUTHENTICATION_BACKENDS)})
 
@@ -22,6 +25,7 @@ def home(request):
                 as_presentee__isnull=True
             ).exclude(Q(id=request.user.id) | Q(is_staff=True)).count(),
             'presentee': presentee,
-            'available_backends': load_backends(settings.AUTHENTICATION_BACKENDS)
+            'available_backends': load_backends(settings.AUTHENTICATION_BACKENDS),
+            'wishlist': wishlist
         }
     )

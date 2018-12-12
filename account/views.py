@@ -27,9 +27,10 @@ from social.backends.utils import load_backends
 from social.apps.django_app.default.models import UserSocialAuth
 
 from account.forms import ProfileForm, EmailChangeForm, \
-    CurrentPasswordChangeForm
+    CurrentPasswordChangeForm, WishlistForm
 from account.models import EmailChange
 from account.utils import generate_key
+from core.models import WishList
 from secret_santa.mixins import LoginRequiredMixin
 
 
@@ -247,3 +248,28 @@ class DeleteAssociationView(View):
         association = get_object_or_404(UserSocialAuth, provider=request.POST.get('provider'), user_id=request.user.pk)
         association.delete()
         return HttpResponse({"result": 'ok'})
+
+
+class WishlistView(LoginRequiredMixin, FormView):
+    form_class = WishlistForm
+    success_url = reverse_lazy('account:wishlist')
+    template_name = 'account/wishlist.html'
+
+    def form_valid(self, form):
+        super_valid = super(WishlistView, self).form_valid(form)
+        description = form.cleaned_data.get('description')
+        wl, created = WishList.objects.get_or_create(user=self.request.user, defaults={'description': description})
+        if not created:
+            wl.description = description
+            wl.save()
+        return super_valid
+
+    def get_context_data(self, **kwargs):
+        context = super(WishlistView, self).get_context_data(**kwargs)
+        try:
+            wishlist = WishList.objects.get(user=self.request.user).description
+        except WishList.DoesNotExist:
+            wishlist = ''
+        context["wishlist"] = wishlist
+        return context
+    

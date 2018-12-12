@@ -16,3 +16,15 @@ class SecretSantaEvent(models.Model):
 class Gift(models.Model):
     santa = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='as_santa')
     presentee = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='as_presentee')
+
+
+class WishList(models.Model):
+    description = models.TextField(
+        default='',
+        blank=True,
+        help_text='Stuff user wants to receive as a gift.'
+    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='wishlist')
+
+    def __str__(self):
+        return "%s %s" % (self.user, self.description)

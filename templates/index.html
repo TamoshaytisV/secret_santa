@@ -7,23 +7,33 @@
         <div class="container text-center">
             <h1>Hello, Raccoon!</h1>
             <br>
+            <div class="row"
             {% if user.is_authenticated %}
                 {% if presentee %}
                     <div class="row">
-                        <p>Your Presentee is {{ presentee }}</p>
+                        <p>Your Presentee is <span id='presentee'>{{ presentee }}</span></p>
+                        <div><img src='/static/images/wohoo.gif' class='img-responsive center-block'/></div>
+                        {% if wishlist %}
+                            <p>(S)He wants: {{ wishlist }}</p>
+                        {% endif %}
                     </div>
                 {% else %}
-                <div class="row" id="santa_button">
-                    <button type="button" name="button" class="btn btn-success"
-                            onclick="RaccoonSanta.send_request('/api/v0/assign/')">
-                        I want to be a Secret Raccoon Santa
-                    </button>
+                <div class="row">
+                    <div class="col-md-12" id="santa_button">
+                        <button type="button" name="button" class="btn btn-success"
+                                onclick="RaccoonSanta.send_request('/api/v0/assign/')">
+                            I want to be a Secret Raccoon Santa
+                        </button>
+                        <br>
+                        
+                    </div>
                 </div>
-                <div class="row" id="santa_result"></div>
                 <br>
                 {% endif %}
+                <div class="row" id="santa_result"></div>
             {% endif %}
-            <h3>There are {{ raccoons }} raccoons want to get presents.</h3>
+            </div>
+            <h3>There are <span id="counter">{{ raccoons }}</span> raccoons want to get presents.</h3>
         </div>
     </div>
 {% endblock %}

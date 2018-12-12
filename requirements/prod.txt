@@ -1,4 +1,4 @@
 -r base.txt
 
-uwsgi==2.0.14
+uwsgi==2.0.15
 gunicorn==19.6.0
