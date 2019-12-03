@@ -1,18 +1,14 @@
-FROM python:2.7
+FROM node:10.17.0-jessie
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 ADD . /code/
 WORKDIR /code
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
-RUN pip install -r requirements.txt
-RUN python2 manage.py makemigrations
-RUN python2 manage.py migrate
-
 RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get -y install npm
+RUN apt-get install python python-pip python-dev -y
+RUN pip install -r requirements.txt
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 RUN npm -y install bower -g
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
-RUN python2 manage.py bower install
-RUN python2 manage.py collectstatic --noinput
+RUN python manage.py bower install
+RUN python manage.py collectstatic --noinput

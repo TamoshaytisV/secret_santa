@@ -42,11 +42,9 @@ INSTALLED_APPS = (
 
     'registration',
     'bootstrap3',
-    'debug_toolbar',
     'rest_framework',
 
     'account',
-    'social.apps.django_app.default',
     'djangobower',
     'core',
     'api',
@@ -62,7 +60,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'secret_santa.urls'
@@ -98,8 +96,8 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
                 'account.context_processors.project_name',
             ),
         },
@@ -178,7 +176,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_by_email',
     'social_core.pipeline.user.create_user',
     'social_core.pipeline.social_auth.associate_user',
-    # 'social.pipeline.debug.debug',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
     'account.pipeline.save_profile_picture_and_profile_url',

@@ -7,7 +7,7 @@ from secret_santa import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url('^auth/', include('social.apps.django_app.urls', namespace='social')),
+    url('^auth/', include('social_django.urls', namespace='social')),
     url(r'^$', views.home, name='home'),
     url('^', include('django.contrib.auth.urls')),
     url(r'^accounts/', include('account.urls', namespace='account')),

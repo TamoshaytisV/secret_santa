@@ -3,6 +3,6 @@
   "description": "RaccoonGang Secret Santa app",
   "version": "0.1",
   "engines": {
-    "node": "4.2.4"
+    "node": "10.17.0"
   }
 }

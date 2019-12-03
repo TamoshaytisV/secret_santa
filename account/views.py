@@ -23,8 +23,8 @@ from django.utils.http import is_safe_url
 from django.shortcuts import resolve_url
 from registration.backends.default.views import ActivationView, \
     RegistrationView
-from social.backends.utils import load_backends
-from social.apps.django_app.default.models import UserSocialAuth
+from social_core.backends.utils import load_backends
+from social_django.models import UserSocialAuth
 
 from account.forms import ProfileForm, EmailChangeForm, \
     CurrentPasswordChangeForm, WishlistForm
@@ -272,4 +272,4 @@ class WishlistView(LoginRequiredMixin, FormView):
             wishlist = ''
         context["wishlist"] = wishlist
         return context
-    
+

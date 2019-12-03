@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db.models import Q
-from social.backends.utils import load_backends
+from social_core.backends.utils import load_backends
 
 from core.models import SecretSantaEvent, Gift, WishList
 
