@@ -5,17 +5,35 @@
 {% block content %}
     <div class="jumbotron">
         <div class="container text-center">
-            <h1>Hello, Raccoon!</h1>
+            <h2>Hello, Raccoon!</h2>
             <br>
             <div class="row"
             {% if user.is_authenticated %}
                 {% if presentee %}
                     <div class="row">
-                        <p>Your Presentee is <span id='presentee'>{{ presentee }}</span></p>
-                        <div><img src='/static/images/wohoo.gif' class='img-responsive center-block'/></div>
-                        {% if wishlist %}
-                            <p>(S)He wants: {{ wishlist }}</p>
+                        <p>Your Presentee is</p>
+                        {% if presentee.avatar.url %}
+                        <p>
+                            <img src="{{presentee.avatar.url}}" class="img-responsive" width="200px" style="margin: 0 auto"/>
+                        </p>
                         {% endif %}
+                        <div class="row presentee-info">
+                            <div class="col-md-6 text-right">
+                                <p>Name:</p>
+                                <p>Email:</p>
+                                {% if wishlist %}
+                                <p>(S)He would like to get:</p>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 text-left">
+                                <p id='presentee'>{{presentee.name}}</p>
+                                <p>{{presentee.email}}</p>
+                                {% if wishlist %}
+                                <p>{{ wishlist }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div><img src='/static/images/wohoo.gif' class='img-responsive center-block'/></div>
                     </div>
                 {% else %}
                 <div class="row">
@@ -25,7 +43,7 @@
                             I want to be a Secret Raccoon Santa
                         </button>
                         <br>
-                        
+
                     </div>
                 </div>
                 <br>
@@ -33,7 +51,7 @@
                 <div class="row" id="santa_result"></div>
             {% endif %}
             </div>
-            <h3>There are <span id="counter">{{ raccoons }}</span> raccoons want to get presents.</h3>
+            <h3>There are still <span id="counter">{{ raccoons }}</span> raccoons who want to get presents.</h3>
         </div>
     </div>
 {% endblock %}

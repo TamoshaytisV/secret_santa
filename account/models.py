@@ -4,8 +4,8 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Account(AbstractUser):
-    city = models.CharField(max_length=255)
-    country = models.CharField(max_length=255)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True, null=True)
     sex = models.CharField(max_length=50, blank=True, null=True)
     avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
     bdate = models.DateField('birthday', blank=True, null=True)

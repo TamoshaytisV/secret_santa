@@ -40,13 +40,7 @@
                 url: url,
                 type: "POST",
                 success: function (data) {
-                    $('#santa_button').remove();
-                    $('#santa_result').html(
-                        "<div><p>Your Presentee is <span id='presentee'></span></p></div><div><img src='/static/images/wohoo.gif' class='img-responsive center-block'/></div>"
-                    );
-                    $('#presentee').html(data.presentee_name);
-                    var counter = parseInt($('#counter').html());
-                    $('#counter').html(counter - 1);
+                    window.location.reload();
                 }
             });
         }

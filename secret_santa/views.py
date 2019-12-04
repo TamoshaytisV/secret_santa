@@ -8,18 +8,24 @@ from core.models import SecretSantaEvent, Gift, WishList
 
 
 def home(request):
-    print("authenticated", request.user.is_authenticated(), request.user.is_authenticated)
     if request.user.is_authenticated():
         gift = Gift.objects.filter(santa=request.user).first()
-        presentee = (gift.presentee.get_full_name() or gift.presentee.username) if gift else None
         wishlist = None
         if gift:
+            presentee = (gift.presentee.get_full_name() or gift.presentee.username)
+            presentee = {
+                'email': gift.presentee.email,
+                'name': presentee,
+                'avatar': gift.presentee.avatar,
+            }
             try:
                 wishlist = getattr(gift.presentee, 'wishlist').get()
             except WishList.DoesNotExist:
                 pass
             if wishlist:
                 wishlist = wishlist.description
+        else:
+            presentee = None
     else:
         return render(request, 'please_login.html', {'backends': load_backends(settings.AUTHENTICATION_BACKENDS)})
 

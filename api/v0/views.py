@@ -22,7 +22,6 @@ class AssignView(APIView):
         return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
-        user_model = get_user_model()
         if Gift.objects.filter(santa=request.user).exists():
             gift = Gift.objects.filter(santa=request.user).first()
             serializer = GiftSerializer(gift)
