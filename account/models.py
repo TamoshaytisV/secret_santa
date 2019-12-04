@@ -8,14 +8,6 @@ class Account(AbstractUser):
     country = models.CharField(max_length=255, blank=True, null=True)
     sex = models.CharField(max_length=50, blank=True, null=True)
     avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
-    bdate = models.DateField('birthday', blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    my_site = models.URLField(blank=True, null=True)
-    skype = models.CharField(max_length=50, blank=True, null=True)
-    facebook = models.URLField(blank=True, null=True)
-    vkontakte = models.URLField(blank=True, null=True)
-    linkedin = models.URLField(blank=True, null=True)
-    odnoklassniki = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         return u'{}'.format(self.username)
@@ -25,10 +17,6 @@ class Account(AbstractUser):
         if name:
             return name
         return self.get_username()
-
-    def is_info(self):
-        info = self.country or self.city or self.bdate
-        return info
 
 
 class EmailChange(models.Model):

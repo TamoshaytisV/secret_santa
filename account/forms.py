@@ -10,14 +10,10 @@ from core.models import WishList
 class ProfileForm(forms.ModelForm):
     last_name = forms.CharField(max_length=255)
     first_name = forms.CharField(max_length=255)
-    bdate = forms.DateField(widget=forms.DateInput(format='%d.%m.%Y'),
-                            input_formats=('%d.%m.%Y',))
 
     class Meta:
         model = Account
-        fields = ['username', 'last_name', 'first_name', 'my_site',
-                  'description', 'skype', 'city', 'country', 'bdate', 'avatar'
-                  ]
+        fields = ['username', 'last_name', 'first_name', 'country', 'avatar', 'sex']
 
 
 class EmailChangeForm(forms.Form):
