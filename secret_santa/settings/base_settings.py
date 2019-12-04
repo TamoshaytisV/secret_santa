@@ -178,7 +178,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
-    'account.pipeline.save_profile_picture_and_profile_url',
     'social_core.pipeline.debug.debug',
 )
 

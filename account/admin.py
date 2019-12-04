@@ -7,7 +7,6 @@ from django.contrib.auth import get_user_model
 class AccountAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (None, {
-            'fields': ('avatar', 'bdate', 'city', 'country', 'sex',
-                       'skype', 'linkedin', 'odnoklassniki', 'vkontakte', 'facebook'),
+            'fields': ('avatar', 'country', 'sex'),
         }),
     )
