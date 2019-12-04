@@ -1,4 +1,4 @@
-Django==1.11.15
+Django==1.11.23
 django-bootstrap3==11.0.0
 sqlparse==0.1.19
 django-registration-redux==1.4
