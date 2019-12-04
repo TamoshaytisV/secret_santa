@@ -19,5 +19,5 @@ path.py==8.2.1
 watchdog==0.7.1
 python-memcached
 libsass==0.10.0
-djangorestframework==3.9.0
+djangorestframework==3.9.1
 pytz
