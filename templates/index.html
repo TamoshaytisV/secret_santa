@@ -12,7 +12,7 @@
                 {% if presentee %}
                     <div class="row">
                         <p>Your Presentee is</p>
-                        {% if presentee.avatar.url %}
+                        {% if presentee.avatar and presentee.avatar.url %}
                         <p>
                             <img src="{{presentee.avatar.url}}" class="img-responsive" width="200px" style="margin: 0 auto"/>
                         </p>
@@ -23,6 +23,8 @@
                                 <p>Email:</p>
                                 {% if wishlist %}
                                 <p>(S)He would like to get:</p>
+                                {% else %}
+                                <p>Wishlist:</p>
                                 {% endif %}
                             </div>
                             <div class="col-md-6 text-left">
@@ -30,6 +32,8 @@
                                 <p>{{presentee.email}}</p>
                                 {% if wishlist %}
                                 <p>{{ wishlist }}</p>
+                                {% else %}
+                                <p>Raccoon has not added it :(</p>
                                 {% endif %}
                             </div>
                         </div>
